@@ -33,7 +33,7 @@ set -ae
 
 # Source env and functions
 . ./usr/local/bin/docker-entrypoint.sh
-
+# . ./docker-entrypoint.sh
 _custom_init_start() { # Runs as root
 	# Print out relevant environment vars for inspection
 	echo "lgd-db environment:"

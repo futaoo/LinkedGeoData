@@ -22,15 +22,15 @@ target:
 
 target/linkedgeodata.deb: components/lgd-tools-parent/pom.xml | target ## Build the LGD debian package used by the sync containers from this lgd's java code
 	mvn -f components/lgd-tools-parent/pom.xml -Pdeb clean install
-	file=`find components/lgd-tools-parent/lgd-tools-pkg-parent/lgd-tools-pkg-deb-cli -name 'linkedgeodata_*.deb'`
-	mkdir -p target
-	cp "$$file" target/linkedgeodata.deb # use ln -s ?
+	# file=`find components/lgd-tools-parent/lgd-tools-pkg-parent/lgd-tools-pkg-deb-cli -name 'linkedgeodata_*.deb'`
+	# mkdir -p target
+	# cp "$$file" target/linkedgeodata.deb # use ln -s ?
 
 # Ugliness: We should not depend on the existence of the target folder in the rule below:
 # We should touch a file if the artifact already is in the local m2 repo
 components/lgd-thirdparty/nominatim/lgd-pkg-nominatim-4.0.1/target: ## Bundle nominatim up as a jar and cache it in the local m2 repo
 	cd components/lgd-thirdparty/nominatim/lgd-pkg-nominatim-4.0.1
-	mvn clean install
+	mvn clean install -f components/lgd-thirdparty/nominatim/lgd-pkg-nominatim-4.0.1/pom.xml
 
 .env: env.dist
 	cp -n env.dist .env
