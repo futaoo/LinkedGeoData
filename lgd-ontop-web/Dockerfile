@@ -1,4 +1,5 @@
-FROM ontop/ontop-endpoint:latest
+# FROM ontop/ontop-endpoint:latest
+FROM futaoo/ontop:4.2.1
 WORKDIR /opt/ontop
 
 #ADD https://repo1.maven.org/maven2/org/postgresql/postgresql/42.2.18/postgresql-42.2.18.jar jdbc/
@@ -27,4 +28,6 @@ RUN sleep 3
 RUN env
 
 EXPOSE 8080
+
+CMD ./entrypoint.sh
 
